@@ -1,6 +1,10 @@
 <template>
-  <div class="min-h-screen">
+  <div class="h-full">
     <main class="flex">
+      <div class="btn-group">
+        <button class="switch-btn" @click="prevChapter" :disabled="curIndex === 0">上</button>
+        <button class="switch-btn" @click="nextChapter" :disabled="curIndex === 80">下</button>
+      </div>
       <div class="vertical-text">
         {{ curDocument.content }}
       </div>
@@ -8,10 +12,6 @@
         {{ curDocument.title }}
       </div>
     </main>
-    <div class="btn-group">
-      <button class="switch-btn" @click="prevChapter" :disabled="curIndex === 0">上</button>
-      <button class="switch-btn" @click="nextChapter" :disabled="curIndex === 80">下</button>
-    </div>
 
     <!-- 章节选择弹窗 -->
     <div v-if="showChapterList" class="chapter-modal">
@@ -78,8 +78,8 @@ body {
   font-size: 1.8rem;
   line-height: 2;
   letter-spacing: 0.5em;
-  height: 82vh;
-  width: 90vw;
+  height: 86vh;
+  width: 100%;
   padding: 2rem 0 0 2rem;
   display: flex;
   justify-content: center;
@@ -105,16 +105,17 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 2rem;
+  padding: 2rem 2rem 0 1rem;
 }
 
 .btn-group {
-  position: fixed;
-  left: 1rem;
-  bottom: 3rem;
+  height: 89vh;
+  padding: 0 0 0 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 2.6rem;
+  padding-bottom: 2rem;
 }
 
 .switch-btn {
@@ -183,7 +184,7 @@ body {
   padding: 0.5rem 1rem;
   cursor: pointer;
   color: #989898;
-  border-bottom: 1px solid #989898;
+  border-bottom: 1px dashed #989898;
   border-radius: 0;
   transition: all 0.3s ease;
 }
